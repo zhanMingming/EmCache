@@ -90,10 +90,12 @@ namespace emcache
 
         int ExpireKeyNum()
         {
+            MutexLocker lock(mutex);
             return  db->ExpireKeyNum();
         }
         int Slots()
         {
+            MutexLocker lock(mutex);
             return db->Slots();
         }
 

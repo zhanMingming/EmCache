@@ -3,40 +3,38 @@
 
 #include <pthread.h>
 #include <boost/noncopyable.hpp>
-
 #include <cassert>
 
+namespace emcache
+{
 
-namespace emcache {
+    class Mutex : private boost::noncopyable
+    {
 
+    public:
+        Mutex();
+        ~Mutex();
 
-class Mutex : private boost::noncopyable {
+        // These two functions can only called by MutexLocker
+        void Lock();
+        void Unlock();
+        bool TryLock();
+        void Init();
+        pthread_mutex_t *getMutexPtr();
 
-public:
-    Mutex();
-    ~Mutex();
+    private:
+        pthread_mutex_t m_mutex;
+    };
 
-    // These two functions can only called by MutexLocker
-    void Lock();
-    void Unlock();
-    bool TryLock();
-    void Init();
-    pthread_mutex_t* getMutexPtr();
+    class MutexLocker : private boost::noncopyable
+    {
+    public:
+        explicit MutexLocker(Mutex &m);
+        ~MutexLocker();
 
-private:
-    pthread_mutex_t m_mutex;
-};
-
-
-
-class MutexLocker : private boost::noncopyable {
-public:
-    explicit MutexLocker(Mutex& m);
-    ~MutexLocker();
-
-private:
-    Mutex& m_mutex;
-};
+    private:
+        Mutex &m_mutex;
+    };
 
 
 }  // namespace emcache

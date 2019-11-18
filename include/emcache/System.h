@@ -4,6 +4,9 @@
 namespace emcache
 {
 
+
+    const double  Mem_Used_Rate = 0.8;
+
 #if defined(__GNUC__)
 #define TPOOL_LIKELY(x)   (__builtin_expect((x), 1))
 #define TPOOL_UNLIKELY(x) (__builtin_expect((x), 0))
@@ -55,6 +58,8 @@ namespace emcache
     };
 
     MemInfo GetMemoccupy();
+
+    bool MemoryIsLow();
 
 } //namespace emcache
 

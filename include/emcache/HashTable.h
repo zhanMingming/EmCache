@@ -3,42 +3,45 @@
 
 #include "Entry.h"
 
-namespace emcache {
+namespace emcache
+{
 
-class HandleTable;
+    class HandleTable;
 
-class HashTable {
- public:
-  friend class HandleTable;
-  
-  HashTable();
-  ~HashTable();
+    class HashTable
+    {
+    public:
+        friend class HandleTable;
 
-  Entry* Lookup(const Robj*  key);
-  Entry* Insert(Entry *key);
-  Entry* Remove(const Robj* key);
-  
+        HashTable();
+        ~HashTable();
 
-  void Resize(int size);
-  void Reset();
-  void Free();
+        Entry *Lookup(const Robj  *key);
+        Entry *Insert(Entry *key);
+        Entry *Remove(const Robj *key);
 
- private:
-  Entry** FindPointer(const Robj* key);
 
-  uint32_t HashFunc(const Robj* key);
+        void Resize(int size);
+        void Reset();
+        void Free();
 
-  bool  NeedResize() {
-      return elems_ > length_;
-  }
+    private:
+        Entry **FindPointer(const Robj *key);
 
-  // 哈希表长度
-  uint32_t length_;
-  // 哈希表节点个数
-  uint32_t elems_;
+        uint32_t HashFunc(const Robj *key);
 
-  Entry** list_;
-};
+        bool  NeedResize()
+        {
+            return elems_ > length_;
+        }
+
+        // 哈希表长度
+        uint32_t length_;
+        // 哈希表节点个数
+        uint32_t elems_;
+
+        Entry **list_;
+    };
 
 
 }// namespace emcache

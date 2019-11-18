@@ -7,146 +7,163 @@
 #include <cstdio>
 #include<iostream>
 
-namespace emcache {
+namespace emcache
+{
 
-struct Robj {
-
-    Robj(const std::string& str) {
-        len = str.length();
-        buf = new char[str.length() + 1];
-        memcpy(buf, str.data(), str.length());
-        buf[len] = 0;
-        count = new int16_t(1);
-    }
-
-
-    Robj(const Robj* rhs)
-    :len(rhs->len), buf(rhs->buf), count(rhs->count)
+    struct Robj
     {
-        ++(*count);
-    }
-    
 
-    // Robj():len(0), buf(nullptr) {}
-    
-    ~Robj() {
-        //std::cout << "free Robj" << std::endl;
-        if (--(*count) == 0) {
-            delete[] buf;
-            buf = nullptr;
-
-            delete[] count;
-            count = nullptr;
-
-            //std::cout << "real free Robj" << std::endl;
+        Robj(const std::string &str)
+        {
+            len = str.length();
+            buf = new char[str.length() + 1];
+            memcpy(buf, str.data(), str.length());
+            buf[len] = 0;
+            count = new int16_t(1);
         }
-    }
-
-    bool operator==(const Robj* x) const {
-        return ((x->size() == size()) && 
-           (memcmp(x->data(), data(), x->size()) == 0));
-    }
-
-    int size()  const {
-        return len;
-    }
-    int length() const {
-        return len;
-    }
-
-    std::string toString() {
-        return std::string(buf, len);
-    }
-
-    const char* data() const {
-        return buf;
-    }
-
-    //length
-    int len;
-
-    //data
-    char* buf;
-
-    //引用计数
-    int16_t *count;
-};
 
 
-// bool operator==(const Robj& x, const Robj& y) {
-//   return ((x.size() == y.size()) &&
-//           (memcmp(x.data(), y.data(), x.size()) == 0));
-// }
-
-// bool operator!=(const Robj& x, const Robj& y) { return !(x == y); }
-
-// bool compartor(const Robj*x, const Robj* y) {
-//     return x->operator==(y);
-// }
+        Robj(const Robj *rhs)
+            : len(rhs->len), buf(rhs->buf), count(rhs->count)
+        {
+            ++(*count);
+        }
 
 
-// bool operator==(const Robj* x, const Robj* y) {
-//     return x->operator==(y);
-// }
+        // Robj():len(0), buf(nullptr) {}
 
-// bool operator!=(const Robj* x, const Robj* y) { return !(x==y);}
+        ~Robj()
+        {
+            //std::cout << "free Robj" << std::endl;
+            if (--(*count) == 0)
+            {
+                delete[] buf;
+                buf = nullptr;
+
+                delete[] count;
+                count = nullptr;
+
+                //std::cout << "real free Robj" << std::endl;
+            }
+        }
+
+        bool operator==(const Robj *x) const
+        {
+            return ((x->size() == size()) &&
+                    (memcmp(x->data(), data(), x->size()) == 0));
+        }
+
+        int size()  const
+        {
+            return len;
+        }
+        int length() const
+        {
+            return len;
+        }
+
+        std::string toString()
+        {
+            return std::string(buf, len);
+        }
+
+        const char *data() const
+        {
+            return buf;
+        }
+
+        //length
+        int len;
+
+        //data
+        char *buf;
+
+        //引用计数
+        int16_t *count;
+    };
 
 
-// Entry 的设计
+    // bool operator==(const Robj& x, const Robj& y) {
+    //   return ((x.size() == y.size()) &&
+    //           (memcmp(x.data(), y.data(), x.size()) == 0));
+    // }
 
-struct Entry {
+    // bool operator!=(const Robj& x, const Robj& y) { return !(x == y); }
 
-    Entry(const std::string& key_,  const std::string& value_) {
-        key = new Robj(key_);
-        v.val = new Robj(value_);
-        flag = true;
-    }
+    // bool compartor(const Robj*x, const Robj* y) {
+    //     return x->operator==(y);
+    // }
 
 
-    Entry(Robj* key_, int64_t expire_time)
+    // bool operator==(const Robj* x, const Robj* y) {
+    //     return x->operator==(y);
+    // }
+
+    // bool operator!=(const Robj* x, const Robj* y) { return !(x==y);}
+
+
+    // Entry 的设计
+
+    struct Entry
     {
-        key = new Robj(key_);
-        v.s64 = expire_time;
-        flag = false;
-    }
 
-    Entry() {
-        key = nullptr;
-        v.val = nullptr;
-        next_hash = nullptr;
-        next = nullptr;
-        prev = nullptr;
-        flag = true;
-    }
+        Entry(const std::string &key_,  const std::string &value_)
+        {
+            key = new Robj(key_);
+            v.val = new Robj(value_);
+            flag = true;
+        }
 
-    ~Entry() {
-        //std::cout << "key:" << key << std::endl;
-        if (key) {
-            delete key;
+
+        Entry(Robj *key_, int64_t expire_time)
+        {
+            key = new Robj(key_);
+            v.s64 = expire_time;
+            flag = false;
+        }
+
+        Entry()
+        {
             key = nullptr;
-            //std::cout << "free key" << std::endl;
-        }
-        if (v.val && flag) {
-            delete v.val;
-
             v.val = nullptr;
-            //std::cout << "free v.val" << std::endl;
+            next_hash = nullptr;
+            next = nullptr;
+            prev = nullptr;
+            flag = true;
         }
-    }
 
-    Robj* key;
+        ~Entry()
+        {
+            //std::cout << "key:" << key << std::endl;
+            if (key)
+            {
+                delete key;
+                key = nullptr;
+                //std::cout << "free key" << std::endl;
+            }
+            if (v.val && flag)
+            {
+                delete v.val;
 
-    union {
-        Robj* val;
-        int64_t s64;
-    }v;
+                v.val = nullptr;
+                //std::cout << "free v.val" << std::endl;
+            }
+        }
 
-    Entry* next_hash;
+        Robj *key;
 
-    Entry* next;
-    Entry* prev;
-    bool flag;
-};
+        union
+        {
+            Robj *val;
+            int64_t s64;
+        } v;
+
+        Entry *next_hash;
+
+        Entry *next;
+        Entry *prev;
+        bool flag;
+    };
 
 
 } //namespace emcache
