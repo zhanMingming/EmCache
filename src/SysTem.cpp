@@ -1,11 +1,12 @@
 #include"System.h"
 
-#include<stdio.h>
-#include<memory>
-#include<unistd.h>
+#include <stdio.h>
+#include <memory>
+#include <unistd.h>
 #include <sys/syscall.h>
 #include <sys/types.h>
 #include <pthread.h>
+#include <iostream>
 
 namespace emcache
 {
@@ -81,8 +82,6 @@ namespace emcache
         return Tid() == ::getpid();
     }
 
-
-
     MemInfo GetMemoccupy()    // get RAM message
     {
 
@@ -90,21 +89,47 @@ namespace emcache
         MemProcInfo m;
         MemInfo result;
 
+        double memTotal = 0;
+        double memFree = 0;
+        double memAvailable = 0;
+
         FILE *fd = fopen ("/proc/meminfo", "r");
 
+        // memTotal
         fgets (buff, sizeof(buff), fd);
         sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
-        double mem_total = m.mem;
+        memTotal = m.mem;
 
+        // memFree
         fgets (buff, sizeof(buff), fd);
         sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
+        memFree = m.mem;
 
-        result.mem_used_rate = (1 - m.mem / mem_total) * 100;
-        result.mem_total = mem_total / (1024 * 1024);
+        // memAvailable
+        fgets (buff, sizeof(buff), fd);
+        sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
+        memAvailable = m.mem;
+
+        result.mem_used_rate = (memTotal - memAvailable) / memTotal;
+        result.mem_total = memTotal / 1024;
 
         fclose(fd);     //关闭文件fd
         return result;
     }
+
+    bool MemoryIsLow()
+    {
+    #if !defined(__APPLE__)
+        MemInfo  memInfo = GetMemoccupy();
+        if (memInfo.mem_used_rate >= Mem_Used_Rate)
+        {
+            return true;
+        }
+    #endif
+        return false;
+    }
+
+
 
 
     // double cal_cpuoccupy (CPU_OCCUPY *o, CPU_OCCUPY *n)

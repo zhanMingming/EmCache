@@ -1,5 +1,7 @@
 #include "HashLRUCache.h"
 #include "Hash.h"
+#include "System.h"
+#include "Util.h"
 
 #include <boost/bind.hpp>
 //#include <boost/protect.hpp>
@@ -28,7 +30,7 @@ namespace emcache
         }
 
         m_thread.reset(new CloseableThread(
-                         boost::bind(&HashLRUCache::ThreadFunction, this, _1), boost::bind(&HashLRUCache::NotifyWhenThreadStop, this, _1)));
+                           boost::bind(&HashLRUCache::ThreadFunction, this, _1), boost::bind(&HashLRUCache::NotifyWhenThreadStop, this, _1)));
     }
 
     HashLRUCache::~HashLRUCache()
@@ -39,6 +41,7 @@ namespace emcache
         }
         delete[] shard;
         shard = nullptr;
+        m_thread->Close();
     }
 
 
@@ -89,6 +92,9 @@ namespace emcache
 
             // 获取键值对数量
             int slots = cur->Slots();
+            std::cout << "curDb:" << pos << " " 
+                      << "ExpireKeyNum:" << cur->ExpireKeyNum() << " "
+                      << "Slots:" << cur->Slots() << std::endl;
 
             // 如果 expireKey/ slots < 1%, 则先别扫描此db
             if (num && slots > 100 && (num * 100 / slots < 1))
@@ -107,6 +113,18 @@ namespace emcache
 
     void HashLRUCache::ThreadFunction(const Function &checkFunc)
     {
+        while(true)
+        {
+            checkFunc();
+
+            DeleteKeyIfExpireCycle();
+
+            if (MemoryIsLow())
+            {
+                DeleteKeyIfExpireCycle();
+            }
+            MicroSleep(100);
+        }
 
     }
 

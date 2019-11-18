@@ -3,9 +3,10 @@
 #include<stdio.h>
 #include<stdint.h>
 
-namespace emcache {
+namespace emcache
+{
 
-uint32_t Hash(const char* data, size_t n, uint32_t seed);
+    uint32_t Hash(const char *data, size_t n, uint32_t seed);
 
 
 } //namespace emcache
