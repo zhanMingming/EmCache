@@ -1,10 +1,10 @@
-#include"HandleTable.h"
-#include"Entry.h"
-#include"Util.h"
-#include<sys/time.h>
-#include<stdlib.h>
-#include<iostream>
-
+#include "HandleTable.h"
+#include "Entry.h"
+#include "Util.h"
+#include <sys/time.h>
+#include <stdlib.h>
+#include <iostream>
+#include <glog/logging.h>
 
 using namespace std;
 
@@ -19,9 +19,8 @@ namespace emcache
 
     HandleTable::~HandleTable()
     {
-        std::cout << "~HandleTable" << std::endl;
+        DLOG(INFO) << "~HandleTable";
     }
-
 
 
     Entry *HandleTable::Lookup(const Robj *key)

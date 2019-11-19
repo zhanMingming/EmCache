@@ -16,8 +16,6 @@ namespace emcache
 
     class HashLRUCache : public Cache
     {
-
-
     public:
 
         typedef CloseableThread::Function Function;

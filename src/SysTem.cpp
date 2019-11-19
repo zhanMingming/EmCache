@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <pthread.h>
 #include <iostream>
+#include <glog/logging.h>
 
 namespace emcache
 {
@@ -126,6 +127,7 @@ namespace emcache
             return true;
         }
     #endif
+        DLOG(INFO) << "MemoryIsLow return ";
         return false;
     }
 

@@ -2,6 +2,7 @@
 #include "Mutex.h"
 #include "Util.h"
 #include "System.h"
+#include <glog/logging.h>
 #include <string>
 #include <sys/time.h>
 #include <stdint.h>
@@ -20,7 +21,7 @@ namespace emcache
         option.max_key_length = option.max_key_length == -1 ? MAX_KEY_LENGTH : option.max_key_length;
         option.max_value_length = option.max_value_length == -1 ? MAX_VALUE_LENGTH : option.max_value_length;
         // Make empty circular linked lists.
-        std::cout << option.toString();
+        DLOG(INFO) << option.toString();
 
         db = new DB(option.load_factor);
 
@@ -31,10 +32,10 @@ namespace emcache
 
     LRUCache::~LRUCache()
     {
-        std::cout << "LRUCache~" << std::endl;
+        DLOG(INFO) << "LRUCache~";
         if (db != nullptr)
         {
-            std::cout << "LRUCache~" << std::endl;
+            DLOG(INFO) << "LRUCache~";
             delete db;
             db = nullptr;
         }
@@ -69,7 +70,8 @@ namespace emcache
         //std::cout << "Lru:" << capacity <<  std::endl;
         //capacity = 1024*1024;
 
-        MutexLocker lock(mutex);
+        //MutexLocker lock(mutex);
+        WriteLockGuard  guard(lock);
         //assert(capacity > 0);
         //分配结点
         Entry *newEntry = new Entry(key, value);
@@ -101,6 +103,7 @@ namespace emcache
     Entry *LRUCache::Lookup(const std::string &key)
     {
         // need ToDo delete search
+        WriteLockGuard  guard(lock);
         Robj search(key);
         Entry  *t =  db->expire->Lookup(&search);
 
@@ -116,6 +119,7 @@ namespace emcache
 
     Entry *LRUCache::LookupWithNotCheckExpire(const std::string &key)
     {
+        ReadLockGuard guard(lock);
         Robj search(key);
         return db->dict->Lookup(&search);
     }
@@ -124,14 +128,13 @@ namespace emcache
 
     bool LRUCache::ExpireKey(const std::string &key, int expire_time_)
     {
+        
         Entry *entry = nullptr;
         if ((entry = LookupWithNotCheckExpire(key)) != nullptr)
         {
+            WriteLockGuard guard(lock);
             int64_t expire_time = timeInSeconds() + expire_time_;
             Entry *expireEntry = new Entry(entry->key, expire_time);
-
-            // 这个锁 需要优化
-            MutexLocker lock(mutex);
             FinishErase(db->expire->Insert(expireEntry));
             ++db->expire_num;
             return true;
@@ -150,11 +153,10 @@ namespace emcache
 
     bool LRUCache::DeleteKeyIfExpire(Entry *expire)
     {
+        DLOG(INFO) << "DeleteKeyIfExpire";
         if (timeInSeconds() > expire->v.s64)
         {
-            std::cout << expire->key->toString() << std::endl;
-            // 这个锁 需要优化
-            MutexLocker lock(mutex);
+            DLOG(INFO) << "delete " << expire->key->toString();
             FreeEntry(expire);
             return true;
         }
@@ -177,6 +179,7 @@ namespace emcache
         {
             Entry *old = lru.next;
             FreeEntry(old);
+
             usage -= old->key->len;
             usage -= old->v.val->len;
         }
@@ -218,12 +221,13 @@ namespace emcache
     int LRUCache::RandomRemoveExpireKey()
     {
 
+        WriteLockGuard  guard(lock);
         int num = db->expire_num;
 
         int del_expire_num = 0;
         while (num--)
         {
-            std::cout << "RandomExpireKey" << std::endl;
+            DLOG(INFO) << "RandomExpireKey";
             Entry  *entry = db->expire->RandomExpireKey();
             if (entry == nullptr)
             {
@@ -231,7 +235,10 @@ namespace emcache
             }
             while(entry != nullptr)
             {
+                DLOG(INFO) << "remove key";
                 Entry *next = entry->next_hash;
+                DLOG(INFO) << "remove key";
+
                 if (DeleteKeyIfExpire(entry))
                 {
                     ++del_expire_num;

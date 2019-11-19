@@ -1,9 +1,10 @@
-#include"HashTable.h"
-#include<stdint.h>
-#include<assert.h>
-#include<stdio.h>
-#include<string.h>
-#include"Hash.h"
+#include "HashTable.h"
+#include "Hash.h"
+#include <stdint.h>
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+#include <glog/logging.h>
 
 
 using namespace std;
@@ -107,7 +108,7 @@ namespace emcache
     void HashTable::Free()
     {
 
-        std::cout << "hashTable start Free" << std::endl;
+        DLOG(INFO) << "hashTable start Free";
 
         for (int index = 0; index < length_; ++index)
         {
