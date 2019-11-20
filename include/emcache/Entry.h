@@ -111,6 +111,9 @@ namespace emcache
         {
             key = new Robj(key_);
             v.val = new Robj(value_);
+            next_hash = nullptr;
+            next = nullptr;
+            prev = nullptr;
             flag = true;
         }
 
@@ -119,6 +122,9 @@ namespace emcache
         {
             key = new Robj(key_);
             v.s64 = expire_time;
+            next_hash = nullptr;
+            next = nullptr;
+            prev = nullptr;
             flag = false;
         }
 

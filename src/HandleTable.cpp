@@ -1,10 +1,10 @@
-#include"HandleTable.h"
-#include"Entry.h"
-#include"Util.h"
-#include<sys/time.h>
-#include<stdlib.h>
-#include<iostream>
-
+#include "HandleTable.h"
+#include "Entry.h"
+#include "Util.h"
+#include <sys/time.h>
+#include <stdlib.h>
+#include <iostream>
+#include <glog/logging.h>
 
 using namespace std;
 
@@ -19,9 +19,8 @@ namespace emcache
 
     HandleTable::~HandleTable()
     {
-        std::cout << "~HandleTable" << std::endl;
+        DLOG(INFO) << "~HandleTable";
     }
-
 
 
     Entry *HandleTable::Lookup(const Robj *key)
@@ -96,19 +95,20 @@ namespace emcache
         if (IsRehashing())
         {
             rand_num = random() % table[1].length_;
+            DLOG(INFO) << "rand_num:" << rand_num << " " << "table1.length" << table[1].length_;
             rand_entry = table[0].list_[rand_num] != nullptr ? table[0].list_[rand_num] : table[1].list_[rand_num];
 
         }
         else
         {
             rand_num = random() % table[0].length_;
+            DLOG(INFO) << "rand_num:" << rand_num << " " << "table1.length" << table[0].length_;
+
             rand_entry = table[0].list_[rand_num];
         }
 
         return rand_entry;
     }
-
-
 
     void HandleTable::Resize()
     {
@@ -118,6 +118,7 @@ namespace emcache
         }
         table[1].Resize(table[0].length_ * 2);
         rehash_idx = 0;
+        ReHash(1);
     }
 
 

@@ -6,7 +6,7 @@
 #include "Entry.h"
 #include "Mutex.h"
 #include "CacheOption.h"
-
+#include "ReadWriteLock.h"
 #include<iostream>
 
 namespace emcache
@@ -90,12 +90,12 @@ namespace emcache
 
         int ExpireKeyNum()
         {
-            MutexLocker lock(mutex);
+            ReadLockGuard  guard(lock);
             return  db->ExpireKeyNum();
         }
         int Slots()
         {
-            MutexLocker lock(mutex);
+            ReadLockGuard  guard(lock);
             return db->Slots();
         }
 
@@ -124,7 +124,7 @@ namespace emcache
         // // Initialized before use.
         // size_t capacity;
 
-        Mutex mutex;
+        ReadWriteLock  lock;
 
         size_t usage;
 

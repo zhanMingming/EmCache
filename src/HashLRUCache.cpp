@@ -4,6 +4,7 @@
 #include "Util.h"
 
 #include <boost/bind.hpp>
+#include <glog/logging.h>
 //#include <boost/protect.hpp>
 
 namespace emcache
@@ -47,7 +48,7 @@ namespace emcache
 
     bool HashLRUCache::Set(const std::string &key, const std::string &value, int expire_time)
     {
-        std::cout << "shardKey:" << Shard(key) << std::endl;
+        DLOG(INFO) << "shardKey:" << Shard(key);
         return shard[Shard(key)]->Set(key, value, expire_time);
     }
 
@@ -92,15 +93,16 @@ namespace emcache
 
             // 获取键值对数量
             int slots = cur->Slots();
-            std::cout << "curDb:" << pos << " " 
+            DLOG(INFO) << "curDb:" << pos << " " 
                       << "ExpireKeyNum:" << cur->ExpireKeyNum() << " "
-                      << "Slots:" << cur->Slots() << std::endl;
+                      << "Slots:" << cur->Slots();
 
             // 如果 expireKey/ slots < 1%, 则先别扫描此db
-            if (num && slots > 100 && (num * 100 / slots < 1))
-            {
-                break;
-            }
+            // if (!num || (slots < 100) || (num * 100 / slots < 1))
+            // {
+            //     DLOG(INFO) << "continue";
+            //     continue;
+            // }
 
             del_expire_num += cur->RandomRemoveExpireKey();
             if (del_expire_num > total_expire_num / 4)
@@ -118,12 +120,17 @@ namespace emcache
             checkFunc();
 
             DeleteKeyIfExpireCycle();
-
+            
+            DLOG(INFO) << "DeleteKeyIfExpireCycle 1 finish";
             if (MemoryIsLow())
             {
                 DeleteKeyIfExpireCycle();
+                DLOG(INFO) << "DeleteKeyIfExpireCycle 2 finish";
+
             }
-            MicroSleep(100);
+            DLOG(INFO) << "start sleep";
+            MicroSleep(1000);
+            DLOG(INFO) << "end sleep";
         }
 
     }
