@@ -119,12 +119,12 @@ namespace emcache
         {
             checkFunc();
 
-            //DeleteKeyIfExpireCycle();
+            DeleteKeyIfExpireCycle();
             
             DLOG(INFO) << "DeleteKeyIfExpireCycle 1 finish";
             if (MemoryIsLow())
             {
-                //DeleteKeyIfExpireCycle();
+                DeleteKeyIfExpireCycle();
                 DLOG(INFO) << "DeleteKeyIfExpireCycle 2 finish";
 
             }

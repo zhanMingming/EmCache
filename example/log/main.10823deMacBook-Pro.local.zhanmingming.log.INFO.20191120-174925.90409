@@ -1,0 +1,110 @@
+Log file created at: 2019/11/20 17:49:25
+Running on machine: 10823deMacBook-Pro.local
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1120 17:49:25.110469 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111526 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111559 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111574 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111587 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111598 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111610 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111625 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111637 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111650 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111661 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111672 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111683 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111694 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111706 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111719 264144320 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 17:49:25.111799 264144320 HashLRUCache.cpp:51] shardKey:10
+I1120 17:49:25.111835 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.111853 264144320 HashLRUCache.cpp:51] shardKey:10
+I1120 17:49:25.111862 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.111871 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.111876 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.111887 264144320 HashLRUCache.cpp:51] shardKey:13
+I1120 17:49:25.111856 98394112 HashLRUCache.cpp:96] curDb:10 ExpireKeyNum:2 Slots:2
+I1120 17:49:25.111896 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.111901 98394112 LRUCache.cpp:227] num:2
+I1120 17:49:25.111904 264144320 HashLRUCache.cpp:51] shardKey:7
+I1120 17:49:25.111909 98394112 LRUCache.cpp:230] RandomExpireKey
+I1120 17:49:25.111913 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.111922 264144320 HashLRUCache.cpp:51] shardKey:13
+I1120 17:49:25.111922 98394112 HandleTable.cpp:105] rand_num:7 table1.length16
+I1120 17:49:25.111932 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.111950 98394112 LRUCache.cpp:233] entry:0x7fef3b500630
+I1120 17:49:25.114042 98394112 LRUCache.cpp:241] remove key
+I1120 17:49:25.114055 98394112 LRUCache.cpp:243] next:0x0
+I1120 17:49:25.114063 98394112 LRUCache.cpp:244] remove key
+I1120 17:49:25.114069 98394112 LRUCache.cpp:155] DeleteKeyIfExpire
+I1120 17:49:25.114075 98394112 LRUCache.cpp:230] RandomExpireKey
+I1120 17:49:25.114073 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114084 98394112 HandleTable.cpp:105] rand_num:6 table1.length16
+I1120 17:49:25.114099 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114116 264144320 HashLRUCache.cpp:51] shardKey:8
+I1120 17:49:25.114127 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114135 264144320 HashLRUCache.cpp:51] shardKey:4
+I1120 17:49:25.114142 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114151 264144320 HashLRUCache.cpp:51] shardKey:0
+I1120 17:49:25.114207 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114285 98394112 LRUCache.cpp:233] entry:0x0
+I1120 17:49:25.114308 98394112 HashLRUCache.cpp:96] curDb:13 ExpireKeyNum:2 Slots:2
+I1120 17:49:25.114318 98394112 LRUCache.cpp:227] num:2
+I1120 17:49:25.114326 98394112 LRUCache.cpp:230] RandomExpireKey
+I1120 17:49:25.114336 98394112 HandleTable.cpp:105] rand_num:9 table1.length16
+I1120 17:49:25.114343 98394112 LRUCache.cpp:233] entry:0x0
+I1120 17:49:25.114351 98394112 LRUCache.cpp:230] RandomExpireKey
+I1120 17:49:25.114357 98394112 HandleTable.cpp:105] rand_num:3 table1.length16
+I1120 17:49:25.114359 264144320 HashLRUCache.cpp:51] shardKey:7
+I1120 17:49:25.114367 98394112 LRUCache.cpp:233] entry:0x0
+I1120 17:49:25.114372 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114375 98394112 HashLRUCache.cpp:124] DeleteKeyIfExpireCycle 1 finish
+I1120 17:49:25.114384 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114392 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114399 264144320 HashLRUCache.cpp:51] shardKey:9
+I1120 17:49:25.114408 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114415 264144320 HashLRUCache.cpp:51] shardKey:8
+I1120 17:49:25.114423 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114430 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114437 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114444 264144320 HashLRUCache.cpp:51] shardKey:7
+I1120 17:49:25.114452 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114382 98394112 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114460 264144320 HashLRUCache.cpp:51] shardKey:2
+I1120 17:49:25.114470 98394112 HashLRUCache.cpp:131] start sleep
+I1120 17:49:25.114481 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114498 264144320 HashLRUCache.cpp:51] shardKey:14
+I1120 17:49:25.114507 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114514 264144320 HashLRUCache.cpp:51] shardKey:5
+I1120 17:49:25.114522 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114529 264144320 HashLRUCache.cpp:51] shardKey:0
+I1120 17:49:25.114537 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114542 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.114549 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.114557 264144320 HashLRUCache.cpp:51] shardKey:12
+I1120 17:49:25.115190 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115204 264144320 HashLRUCache.cpp:51] shardKey:11
+I1120 17:49:25.115216 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115223 264144320 HashLRUCache.cpp:51] shardKey:7
+I1120 17:49:25.115233 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115242 264144320 HashLRUCache.cpp:51] shardKey:2
+I1120 17:49:25.115262 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.115272 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.115279 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115288 264144320 HashLRUCache.cpp:51] shardKey:12
+I1120 17:49:25.115296 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.115304 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.115311 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115320 264144320 HashLRUCache.cpp:51] shardKey:1
+I1120 17:49:25.115401 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115412 264144320 HashLRUCache.cpp:51] shardKey:5
+I1120 17:49:25.115422 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.115430 264144320 HashTable.cpp:111] hashTable start Free
+I1120 17:49:25.115437 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115444 264144320 HashLRUCache.cpp:51] shardKey:10
+I1120 17:49:25.115453 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115461 264144320 HashLRUCache.cpp:51] shardKey:15
+I1120 17:49:25.115470 264144320 SysTem.cpp:130] MemoryIsLow return 
+I1120 17:49:25.115478 264144320 HashLRUCache.cpp:51] shardKey:3
+I11

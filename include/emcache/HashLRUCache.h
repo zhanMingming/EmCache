@@ -59,7 +59,7 @@ namespace emcache
             return total;
         }
 
-        void DeleteKeyIfExpireCycle();
+        void  DeleteKeyIfExpireCycle();
 
         void  ThreadFunction(const Function &checkFunc);
 

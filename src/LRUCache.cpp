@@ -27,7 +27,6 @@ namespace emcache
 
         lru.next = &lru;
         lru.prev = &lru;
-
     }
 
     LRUCache::~LRUCache()
@@ -154,6 +153,7 @@ namespace emcache
     bool LRUCache::DeleteKeyIfExpire(Entry *expire)
     {
         DLOG(INFO) << "DeleteKeyIfExpire";
+        DLOG(INFO) << "v.s64:" << expire->v.s64;
         if (timeInSeconds() > expire->v.s64)
         {
             DLOG(INFO) << "delete " << expire->key->toString();
@@ -225,18 +225,23 @@ namespace emcache
         int num = db->expire_num;
 
         int del_expire_num = 0;
-        while (num--)
+        DLOG(INFO) << "num:" << num;
+        while (num > 0)
         {
             DLOG(INFO) << "RandomExpireKey";
             Entry  *entry = db->expire->RandomExpireKey();
+            --num;
+            DLOG(INFO) << "entry:" << entry;
             if (entry == nullptr)
             {
                 continue;
             }
+
             while(entry != nullptr)
             {
                 DLOG(INFO) << "remove key";
                 Entry *next = entry->next_hash;
+                DLOG(INFO) << "next:" << next;
                 DLOG(INFO) << "remove key";
 
                 if (DeleteKeyIfExpire(entry))
@@ -245,6 +250,7 @@ namespace emcache
                 }
                 entry = next;
             }
+
         }
         return del_expire_num;
     }
