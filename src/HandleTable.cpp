@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <glog/logging.h>
+#include <cassert>
 
 using namespace std;
 

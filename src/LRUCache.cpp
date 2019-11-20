@@ -153,6 +153,8 @@ namespace emcache
     bool LRUCache::DeleteKeyIfExpire(Entry *expire)
     {
         DLOG(INFO) << "DeleteKeyIfExpire";
+        DLOG(INFO) << "key:" << expire->key->toString();
+
         DLOG(INFO) << "v.s64:" << expire->v.s64;
         if (timeInSeconds() > expire->v.s64)
         {
@@ -217,6 +219,17 @@ namespace emcache
     /*
     redis.c/activeExpireCycle
     */
+    void PrintInfo(Entry* entry) {
+        std::string info = "";
+
+        while(entry != nullptr) {
+            Entry* next = entry->next_hash;
+            info += next->key->toString();
+            info += to_string(next->v.s64);
+            entry = next;
+        }
+        DLOG(INFO) << "info:" << info;
+    }
 
     int LRUCache::RandomRemoveExpireKey()
     {
@@ -230,12 +243,14 @@ namespace emcache
         {
             DLOG(INFO) << "RandomExpireKey";
             Entry  *entry = db->expire->RandomExpireKey();
+
             --num;
             DLOG(INFO) << "entry:" << entry;
             if (entry == nullptr)
             {
                 continue;
             }
+            PrintInfo(entry);
 
             while(entry != nullptr)
             {
