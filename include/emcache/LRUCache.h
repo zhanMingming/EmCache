@@ -27,14 +27,12 @@ namespace emcache
         {
             if (dict != nullptr)
             {
-                std::cout << "dict~" << std::endl;
                 delete dict;
                 dict = nullptr;
             }
 
             if (expire != nullptr)
             {
-                std::cout << "expire~" << std::endl;
                 delete expire;
                 expire = nullptr;
             }
@@ -90,12 +88,12 @@ namespace emcache
 
         int ExpireKeyNum()
         {
-            ReadLockGuard  guard(lock);
+            MutexLocker lock(mutex);
             return  db->ExpireKeyNum();
         }
         int Slots()
         {
-            ReadLockGuard  guard(lock);
+            MutexLocker lock(mutex);
             return db->Slots();
         }
 
@@ -124,7 +122,8 @@ namespace emcache
         // // Initialized before use.
         // size_t capacity;
 
-        ReadWriteLock  lock;
+        //ReadWriteLock  lock;
+        Mutex  mutex;
 
         size_t usage;
 

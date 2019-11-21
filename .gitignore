@@ -10,3 +10,4 @@
 Debug/*
 main
 log/*
+*.log

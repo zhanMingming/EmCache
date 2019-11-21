@@ -28,7 +28,6 @@ namespace emcache
         // function that was passed to the constructor.
         ~HashLRUCache();
 
-
         bool Set(const std::string &key, const std::string &value, int expire_time = -1);
 
 
@@ -84,9 +83,6 @@ namespace emcache
         const std::string name;
 
         boost::scoped_ptr<CloseableThread> m_thread; // Thread must be the last variable
-
-
-
         //uint64_t  last_id;
     };
 

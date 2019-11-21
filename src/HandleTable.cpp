@@ -4,7 +4,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <iostream>
-#include <glog/logging.h>
+// #include <glog/logging.h>
 #include <cassert>
 
 using namespace std;
@@ -20,9 +20,8 @@ namespace emcache
 
     HandleTable::~HandleTable()
     {
-        DLOG(INFO) << "~HandleTable";
+        //DLOG(INFO) << "~HandleTable";
     }
-
 
     Entry *HandleTable::Lookup(const Robj *key)
     {
@@ -43,8 +42,6 @@ namespace emcache
         return table[0].Lookup(key);
     }
 
-
-
     Entry *HandleTable::Insert(Entry *key)
     {
         //std::cout << "HandleTable Insert" << std::endl;
@@ -57,7 +54,7 @@ namespace emcache
         else
         {
             old = table[0].Insert(key);
-            if (table[0].length_  * load_factor  >  table[0].elems_)
+            if (table[0].length_  * load_factor  <= table[0].elems_)
             {
                 Resize();
             }
@@ -87,6 +84,15 @@ namespace emcache
     /**
      * return num of removeExpireKey
      */
+    // void PrintInfo2(Entry** list, int size) {
+    //     std::string info = "RandomExpireKey:list:" + to_string(size) + ": ";
+    //     for (int index = 0; index < size; ++index) {
+    //         info += to_string((uint64_t)list[index]);
+    //         info += ":";
+    //     }
+    //     DLOG(INFO) << info;
+
+    // }
 
     Entry *HandleTable::RandomExpireKey()
     {
@@ -96,16 +102,18 @@ namespace emcache
         if (IsRehashing())
         {
             rand_num = random() % table[1].length_;
-            DLOG(INFO) << "rand_num:" << rand_num << " " << "table1.length" << table[1].length_;
-            rand_entry = table[0].list_[rand_num] != nullptr ? table[0].list_[rand_num] : table[1].list_[rand_num];
+            // DLOG(INFO) << "rand_num:" << rand_num << " " << "table1.length" << table[1].length_;
+            rand_entry =  table[1].list_[rand_num];
+            // PrintInfo2(table[1].list_, table[1].length_);
 
         }
         else
         {
             rand_num = random() % table[0].length_;
-            DLOG(INFO) << "rand_num:" << rand_num << " " << "table1.length" << table[0].length_;
+            // DLOG(INFO) << "rand_num:" << rand_num << " " << "table0.length" << table[0].length_;
 
             rand_entry = table[0].list_[rand_num];
+            // PrintInfo2(table[0].list_, table[0].length_);
         }
 
         return rand_entry;
@@ -127,10 +135,10 @@ namespace emcache
     {
 
         if (rehash_idx < 0) return 0;
-        while(step--)
+        while(step > 0)
         {
 
-
+            --step;
             if (table[0].elems_ == 0)
             {
 
@@ -169,8 +177,6 @@ namespace emcache
         }
         return 1;
     }
-
-
 
     /*
      在给定毫秒数内，以 100 步为单位，对字典进行 rehash 。

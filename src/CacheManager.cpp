@@ -1,8 +1,7 @@
-
-#include"CacheManager.h"
-#include"Cache.h"
-#include"HashLRUCache.h"
-#include"CacheOption.h"
+#include "CacheManager.h"
+#include "Cache.h"
+#include "HashLRUCache.h"
+#include "CacheOption.h"
 
 
 using namespace std;
@@ -26,21 +25,20 @@ namespace emcache
         return instance;
     }
 
-    Cache  *CacheManager::Create(const std::string &name, CacheOption option)
+    boost::shared_ptr<Cache> CacheManager::Create(const std::string &name, CacheOption option)
     {
-        Cache *cache = new HashLRUCache(name, option);
+        boost::shared_ptr<Cache> cache(new HashLRUCache(name, option));
         return cache;
     }
 
-    void CacheManager::AddCache(Cache *cache)
+    void CacheManager::AddCache(boost::shared_ptr<Cache> cache)
     {
         mapping_cache.insert(make_pair(cache->Name(), cache));
     }
 
-
-    Cache *CacheManager::GetCache(const string &name)
+    boost::shared_ptr<Cache> CacheManager::GetCache(const string &name)
     {
-        map<string, Cache *>::iterator  pair = mapping_cache.find(name);
+        map<string, boost::shared_ptr<Cache> >::iterator  pair = mapping_cache.find(name);
         if (pair != mapping_cache.end())
         {
             return pair->second;
