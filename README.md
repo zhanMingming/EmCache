@@ -1,3 +1,4 @@
+[中文版](https://github.com/zhanMingming/EmCache/blob/master/README_CN.md)
 ## I. Introduction
 
 Emcache is a local high-performance cache library implemented by C++. The underlying core data structure is a hash table,The main design ideas are as follows:
