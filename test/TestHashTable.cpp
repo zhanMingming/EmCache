@@ -26,5 +26,4 @@ int main() {
         Entry *tmp = handle.Lookup(s);
         std::cout << tmp->key->toString() << ":" << tmp->v.val->toString() << std::endl;
     }
-
 }
