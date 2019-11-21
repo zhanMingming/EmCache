@@ -176,7 +176,7 @@ namespace emcache
         }
         catch (const CloseableThreadExitException &)
         {
-            cerr << " Success Close Thread id: " + to_string(m_thread->GetThreadId()) << endl;
+            //cerr << " Success Close Thread id: " + to_string(m_thread->GetThreadId()) << endl;
         }
         // catch (...) // caught other exception
         // {

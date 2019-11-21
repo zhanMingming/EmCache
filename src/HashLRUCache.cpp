@@ -4,7 +4,7 @@
 #include "Util.h"
 
 #include <boost/bind.hpp>
-#include <glog/logging.h>
+//#include <glog/logging.h>
 //#include <boost/protect.hpp>
 
 namespace emcache
@@ -36,19 +36,18 @@ namespace emcache
 
     HashLRUCache::~HashLRUCache()
     {
+        m_thread->Close();
         for(int index = 0; index < db_num; ++index)
         {
             delete shard[index];
         }
         delete[] shard;
         shard = nullptr;
-        m_thread->Close();
     }
 
 
     bool HashLRUCache::Set(const std::string &key, const std::string &value, int expire_time)
     {
-        DLOG(INFO) << "shardKey:" << Shard(key);
         return shard[Shard(key)]->Set(key, value, expire_time);
     }
 
@@ -62,12 +61,10 @@ namespace emcache
         return  (Hash(key.data(), key.size(), 0) & (db_num - 1));
     }
 
-
     bool  HashLRUCache::ExpireKey(const std::string &key, int expire_time)
     {
         return  shard[Shard(key)]->ExpireKey(key, expire_time);
     }
-
 
     void HashLRUCache::DeleteKeyIfExpireCycle()
     {
@@ -90,19 +87,16 @@ namespace emcache
                 //cur->AvgTtl(0);
                 continue;
             }
-
             // 获取键值对数量
             int slots = cur->Slots();
-            DLOG(INFO) << "curDb:" << pos << " " 
-                      << "ExpireKeyNum:" << cur->ExpireKeyNum() << " "
-                      << "Slots:" << cur->Slots();
-
+            // DLOG(INFO) << "curDb:" << pos << " " 
+            //           << "ExpireKeyNum:" << cur->ExpireKeyNum() << " "
+            //           << "Slots:" << cur->Slots();
             // 如果 expireKey/ slots < 1%, 则先别扫描此db
-            // if (!num || (slots < 100) || (num * 100 / slots < 1))
-            // {
-            //     DLOG(INFO) << "continue";
-            //     continue;
-            // }
+            if (!num || (slots < 100) || (num * 100 / slots < 1))
+            {
+                continue;
+            }
 
             del_expire_num += cur->RandomRemoveExpireKey();
             if (del_expire_num > total_expire_num / 4)
@@ -120,28 +114,17 @@ namespace emcache
             checkFunc();
 
             DeleteKeyIfExpireCycle();
-            
-            DLOG(INFO) << "DeleteKeyIfExpireCycle 1 finish";
             if (MemoryIsLow())
             {
                 DeleteKeyIfExpireCycle();
-                DLOG(INFO) << "DeleteKeyIfExpireCycle 2 finish";
 
             }
-            DLOG(INFO) << "start sleep";
             MicroSleep(1000);
-            DLOG(INFO) << "end sleep";
         }
-
     }
-
 
     void HashLRUCache::NotifyWhenThreadStop(int threadId)
     {
-
     }
 
 } //namespace emcache
-
-
-

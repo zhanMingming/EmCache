@@ -1,6 +1,6 @@
 #ifndef EMCACHE_CACHE_OPTION
 #define EMCACHE_CACHE_OPTION
-#include<string>
+#include <string>
 /*
 volatile-lru：使用LRU算法进行数据淘汰（淘汰上次使用时间最早的，且使用次数最少的key），只淘汰设定了有效期的key ；
 allkeys-lru：使用LRU算法进行数据淘汰，所有的key都可以被淘汰；
@@ -12,8 +12,6 @@ no-enviction：不删除任意数据(但redis还会根据引用计数器进行�
 
 namespace emcache
 {
-
-
     enum  LruOption
     {
         volatile_lru = 0,
@@ -24,25 +22,19 @@ namespace emcache
     {
 
         LruOption  lru = volatile_lru;
-
         //单位KB，
 
         int maxmemory = -1;
 
-
         int max_key_length =  521;
 
-
-
         int max_value_length = 1024;
-
 
         //负载因子 大于此值， 开始扩容
         float load_factor = 2.0;
 
         //DB 数量  一般可以和cpu core 想等
         int db_num = 16;
-
 
         std::string toString()
         {
@@ -55,8 +47,6 @@ namespace emcache
         }
     };
 
-
 } //endif
-
 
 #endif

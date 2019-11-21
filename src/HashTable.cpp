@@ -4,7 +4,8 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
-#include <glog/logging.h>
+// #include <glog/logging.h>
+#include <string>
 
 
 using namespace std;
@@ -25,12 +26,10 @@ namespace emcache
         Free();
     }
 
-
     uint32_t HashTable::HashFunc(const Robj *key)
     {
         return Hash(key->data(), key->length(), 1024);
     }
-
 
     Entry *HashTable::Lookup(const Robj *key)
     {
@@ -73,7 +72,6 @@ namespace emcache
         return result;
     }
 
-
     Entry **HashTable::FindPointer(const Robj *key)
     {
         uint32_t hash = HashFunc(key);
@@ -85,7 +83,6 @@ namespace emcache
         return ptr;
     }
 
-
     void HashTable::Reset()
     {
         length_ = 0;
@@ -93,22 +90,26 @@ namespace emcache
         list_ = nullptr;
     }
 
+    // void PrintInfo(Entry** list, int size) {
+    //     std::string info = "Resize:list:" + to_string(size) + ": ";
+    //     for (int index = 0; index < size; ++index) {
+    //         info += to_string((uint64_t)list[index]);
+    //         info += ":";
+    //     }
+    //     DLOG(INFO) << info;
+
+    // }
     void HashTable::Resize(int size)
     {
 
         Entry **new_list = new Entry*[size];
         memset(new_list, 0, sizeof(new_list[0]) * size);
-
         list_ = new_list;
         length_ = size;
-
     }
-
 
     void HashTable::Free()
     {
-
-        DLOG(INFO) << "hashTable start Free";
 
         for (int index = 0; index < length_; ++index)
         {

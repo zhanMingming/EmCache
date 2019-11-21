@@ -1,0 +1,148 @@
+Log file created at: 2019/11/20 23:28:16
+Running on machine: bogon
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1120 23:28:16.292471 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293334 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293342 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293349 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293359 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293365 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293370 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293378 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293385 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293390 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293413 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293423 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293431 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293447 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293454 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293462 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293474 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293484 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293493 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293506 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293517 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293529 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293543 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293553 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293560 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293574 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293584 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293591 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293603 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293613 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293622 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293637 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293646 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293654 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293668 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293678 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293686 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293700 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293710 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293718 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293732 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293742 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293784 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293804 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293815 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293823 357897664 LRUCache.cpp:24] lru:0	maxmemory:-1	max_key_length:521	max_value_length:1024	load_factor:2.000000	db_num:16
+I1120 23:28:16.293890 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.293902 357897664 HashTable.cpp:103] Resize:list:8: 0:0:0:0:0:0:0:0:
+I1120 23:28:16.294042 357897664 HashLRUCache.cpp:51] shardKey:10
+I1120 23:28:16.294049 38367232 HashLRUCache.cpp:124] DeleteKeyIfExpireCycle 1 finish
+I1120 23:28:16.294064 38367232 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294064 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294075 38367232 HashLRUCache.cpp:131] start sleep
+I1120 23:28:16.294097 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294127 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294137 357897664 HashLRUCache.cpp:51] shardKey:10
+I1120 23:28:16.294147 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294154 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294162 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294170 357897664 HashLRUCache.cpp:51] shardKey:13
+I1120 23:28:16.294183 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294198 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294204 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294212 357897664 HashLRUCache.cpp:51] shardKey:7
+I1120 23:28:16.294226 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294239 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294247 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294255 357897664 HashLRUCache.cpp:51] shardKey:13
+I1120 23:28:16.294263 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294312 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294320 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294329 357897664 HashLRUCache.cpp:51] shardKey:8
+I1120 23:28:16.294342 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294354 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294363 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294369 357897664 HashLRUCache.cpp:51] shardKey:4
+I1120 23:28:16.294381 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294394 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294401 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294409 357897664 HashLRUCache.cpp:51] shardKey:0
+I1120 23:28:16.294423 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294451 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294461 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294468 357897664 HashLRUCache.cpp:51] shardKey:7
+I1120 23:28:16.294477 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294486 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294492 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294500 357897664 HashLRUCache.cpp:51] shardKey:9
+I1120 23:28:16.294517 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294530 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294538 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294546 357897664 HashLRUCache.cpp:51] shardKey:8
+I1120 23:28:16.294587 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294597 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294605 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294656 357897664 HashLRUCache.cpp:51] shardKey:7
+I1120 23:28:16.294675 357897664 HashTable.cpp:103] Resize:list:32: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294693 357897664 HashTable.cpp:103] Resize:list:32: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294703 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294710 357897664 HashLRUCache.cpp:51] shardKey:2
+I1120 23:28:16.294723 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294736 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294744 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294751 357897664 HashLRUCache.cpp:51] shardKey:14
+I1120 23:28:16.294765 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294778 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294786 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294795 357897664 HashLRUCache.cpp:51] shardKey:5
+I1120 23:28:16.294807 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294821 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294828 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294836 357897664 HashLRUCache.cpp:51] shardKey:0
+I1120 23:28:16.294900 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294910 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.294919 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294926 357897664 HashLRUCache.cpp:51] shardKey:12
+I1120 23:28:16.294940 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294953 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.294961 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.294970 357897664 HashLRUCache.cpp:51] shardKey:11
+I1120 23:28:16.294983 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.295001 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.295008 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.295017 357897664 HashLRUCache.cpp:51] shardKey:7
+I1120 23:28:16.295025 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.295083 357897664 HashLRUCache.cpp:51] shardKey:2
+I1120 23:28:16.295102 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.295111 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.295120 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.295127 357897664 HashLRUCache.cpp:51] shardKey:12
+I1120 23:28:16.295136 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.295145 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.295152 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.295161 357897664 HashLRUCache.cpp:51] shardKey:1
+I1120 23:28:16.295174 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.295187 357897664 HashTable.cpp:103] Resize:list:16: 0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:
+I1120 23:28:16.295195 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.295203 357897664 HashLRUCache.cpp:51] shardKey:5
+I1120 23:28:16.295212 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.295223 38367232 HashLRUCache.cpp:133] end sleep
+I1120 23:28:16.295274 357897664 HashTable.cpp:121] hashTable start Free
+I1120 23:28:16.295287 357897664 SysTem.cpp:130] MemoryIsLow return 
+I1120 23:28:16.295300 357897664 HashLRUCache.cpp:51] shardKey:10
+I1120 23:28:16.295305 38367232 HashLRUCache.cpp:96] curDb:0 ExpireKeyNum:2 Slots:2
+I1120 23:28:16.295317 38367232 LRUCache.cpp:
