@@ -169,18 +169,17 @@ namespace emcache
         {
             std::cout << "LRU1" << std::endl;
             Entry *old = lru.next;
-            FreeEntry(old);
-
             usage -= old->key->len;
             usage -= old->v.val->len;
+            FreeEntry(old);
         }
 
         while (MemoryIsLow() && lru.next != &lru) {
             std::cout << "LRU2" << std::endl;
             Entry *old = lru.next;
-            FreeEntry(old);
             usage -= old->key->len;
             usage -= old->v.val->len;
+            FreeEntry(old);
         }
     }
 
