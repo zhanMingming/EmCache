@@ -186,7 +186,7 @@ namespace emcache
 
     void LRUCache::FreeEntry(Entry *del)
     {
-        std::cout << del->key << std::endl;
+        std::cout << del->key->toString() << std::endl;
         Entry *dictDel = db->dict->Remove(del->key);
 
         if (dictDel)

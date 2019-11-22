@@ -121,6 +121,8 @@ namespace emcache
     {
     #if !defined(__APPLE__)
         MemInfo  memInfo = GetMemoccupy();
+        std::cout << "total:"  << memInfo.mem_total;
+        std::cout << "used_rate:" << memInfo.mem_used_rate;
         if (memInfo.mem_used_rate >= Mem_Used_Rate)
         {
             std::cout << "Mem return true" << std::endl;
