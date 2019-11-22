@@ -18,14 +18,14 @@ namespace emcache
         assert(db_num > 0);
         //name = name_;
 
-        if (option.maxmemory != -1)
+        if (option.maxmemory != 0)
         {
             const size_t per_capacity = (option.maxmemory + db_num - 1) / db_num;
             option.maxmemory = per_capacity;
         }
 
         shard  = new LRUCache*[db_num];
-        for (int index = 0; index < db_num; ++index)
+        for (size_t index = 0; index < db_num; ++index)
         {
             shard[index] = new LRUCache(option);
         }
@@ -37,7 +37,7 @@ namespace emcache
     HashLRUCache::~HashLRUCache()
     {
         m_thread->Close();
-        for(int index = 0; index < db_num; ++index)
+        for(size_t index = 0; index < db_num; ++index)
         {
             delete shard[index];
         }
@@ -74,7 +74,7 @@ namespace emcache
         int total_expire_num = TotalExpireNum();
         int del_expire_num = 0;
 
-        for(int pos = 0; pos < db_num; ++pos)
+        for(size_t pos = 0; pos < db_num; ++pos)
         {
             LRUCache  *cur = shard[pos];
 

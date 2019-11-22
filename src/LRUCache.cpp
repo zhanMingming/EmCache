@@ -14,12 +14,12 @@ namespace emcache
 {
 
     LRUCache::LRUCache(CacheOption option_)
-        : option(option_), usage(0)
+        : usage(0), option(option_)
     {
         assert(option.load_factor > 0);
 
-        option.max_key_length = option.max_key_length == -1 ? MAX_KEY_LENGTH : option.max_key_length;
-        option.max_value_length = option.max_value_length == -1 ? MAX_VALUE_LENGTH : option.max_value_length;
+        option.max_key_length = option.max_key_length == 0 ? MAX_KEY_LENGTH : option.max_key_length;
+        option.max_value_length = option.max_value_length == 0 ? MAX_VALUE_LENGTH : option.max_value_length;
         // Make empty circular linked lists.
         db = new DB(option.load_factor);
 
@@ -36,16 +36,14 @@ namespace emcache
         }
     }
 
-
     bool LRUCache::Set(const std::string &key,  const std::string &value,  int expire_time)
     {
-        if (key.size() > option.max_key_length  || value.size() > option.max_value_length)
+        if ((key.size() / 1024)> option.max_key_length  || (value.size()/1024) > option.max_value_length)
         {
             return false;
         }
 
         return Insert(key, value, expire_time);
-
     }
 
     std::string LRUCache::Get(const std::string &key)
@@ -81,7 +79,7 @@ namespace emcache
             ++db->expire_num;
         }
 
-        if ((option.maxmemory == -1 && MemoryIsLow()) || (option.maxmemory != -1 && usage > option.maxmemory))
+        if ((option.maxmemory == 0 && MemoryIsLow()) || (option.maxmemory != 0 && usage > option.maxmemory))
         {
             LRUEliminate(option.lru);
         }
@@ -166,7 +164,7 @@ namespace emcache
         //当插入Key之后，发现所用空间> caapacity时，需要释放空间
         // Todo  需要 优化
         // Mac 系统下 目前没有设置maxmemory的话，当内存紧张时 无法回收内存
-        while (option.maxmemory != -1 && usage > option.maxmemory && lru.next != &lru)
+        while (option.maxmemory != 0 && usage > option.maxmemory && lru.next != &lru)
         {
             Entry *old = lru.next;
             FreeEntry(old);
@@ -226,7 +224,7 @@ namespace emcache
     {
         MutexLocker  lock(mutex);
         //WriteLockGuard  guard(lock);
-        int num = db->expire_num;
+        size_t num = db->expire_num;
 
         int del_expire_num = 0;
         while (num > 0)

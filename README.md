@@ -85,23 +85,27 @@ struct CacheOption
     LruOption  lru;
         
     // Maximum memory  MB
+    //// A value of 0 means unlimited
     int maxmemory;
 
-    //Maximum key length KB
+    //Maximum key length (KB)
+    // Default-Value = 521KB
     int max_key_length;
 
-    //Maximum value length KB
+    //Maximum value length (KB)
+    // Default-Value = 1024KB
     int max_value_length;
 
     //If the load factor is greater than this value (generally set to 1.0), capacity expansion will begin
+    // Default-Value = 1.0
     float load_factor;
 
     //The number of DB is recommended to be set as the number of CPU cores
     //In order to achieve high performance, emcache uses multiple hash tables at the bottom,
     //which reduces the competition for locks in a multithreaded environment
-    int db_num = 16;
+    //Default-Value = 16
+    int db_num;
 };
-
 
 ```
 

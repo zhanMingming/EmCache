@@ -111,7 +111,7 @@ namespace emcache
     void HashTable::Free()
     {
 
-        for (int index = 0; index < length_; ++index)
+        for (uint32_t index = 0; index < length_; ++index)
         {
             Entry *h = list_[index];
             while (h != nullptr)

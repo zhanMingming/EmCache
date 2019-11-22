@@ -11,3 +11,4 @@ Debug/*
 main
 log/*
 *.log
+build/*

@@ -84,22 +84,26 @@ struct CacheOption
     LruOption  lru;
         
     // 最多使用内存 单位：MB
+    // 值为0 代表 无限制
     int maxmemory;
 
     //最大KEY的长度 单位：KB
+    // 默认值为 521KB
     int max_key_length;
 
     //最大Value的长度 单位：KB
+    // 默认值为 1024KB
     int max_value_length;
 
     //负载因子 大于此值(一般设置为1.0) 开始扩容
+    //默认值为1.0
     float load_factor;
 
     //db数量, 这里推荐设置为CPU核心数
     //Emcache为了高性能, 底层采用了多个哈希表，在多线程环境下减少了对锁的竞争
-    int db_num = 16;
+    //默认值为16
+    int db_num;
 };
-
 
 ```
 
