@@ -90,7 +90,7 @@ namespace emcache
         MemInfo result;
 
         double memTotal = 0;
-        double memFree = 0;
+        // double memFree = 0;
         double memAvailable = 0;
 
         FILE *fd = fopen ("/proc/meminfo", "r");
@@ -101,9 +101,9 @@ namespace emcache
         memTotal = m.mem;
 
         // memFree
-        fgets (buff, sizeof(buff), fd);
-        sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
-        memFree = m.mem;
+        // fgets (buff, sizeof(buff), fd);
+        // sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
+        // memFree = m.mem;
 
         // memAvailable
         fgets (buff, sizeof(buff), fd);
