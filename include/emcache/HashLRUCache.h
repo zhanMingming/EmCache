@@ -40,7 +40,7 @@ namespace emcache
         size_t TotalCharge() const
         {
             size_t total = 0;
-            for (int pos = 0; pos < db_num; ++pos)
+            for (size_t pos = 0; pos < db_num; ++pos)
             {
                 total += shard[pos]->TotalCharge();
             }
@@ -50,7 +50,7 @@ namespace emcache
         size_t TotalExpireNum() const
         {
             size_t total = 0;
-            for (int pos = 0; pos < db_num; ++pos)
+            for (size_t pos = 0; pos < db_num; ++pos)
             {
                 total += shard[pos]->ExpireKeyNum();
 
@@ -78,7 +78,7 @@ namespace emcache
 
         LRUCache  **shard;
 
-        int db_num;
+        size_t db_num;
 
         const std::string name;
 
