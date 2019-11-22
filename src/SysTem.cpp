@@ -100,9 +100,9 @@ namespace emcache
         sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
         memTotal = m.mem;
 
-        // memFree
-        // fgets (buff, sizeof(buff), fd);
-        // sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
+        //memFree
+        fgets (buff, sizeof(buff), fd);
+        sscanf (buff, "%s %lu %s\n", m.name, &m.mem, m.name02);
         // memFree = m.mem;
 
         // memAvailable
@@ -131,7 +131,7 @@ namespace emcache
     #endif
         std::cout << "Mem return flase" << std::endl;
 
-        return false;
+        return true;
     }
 
 

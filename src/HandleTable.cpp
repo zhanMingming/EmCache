@@ -78,6 +78,7 @@ namespace emcache
             // }
             // return result;
         }
+        std::cout << "table[0] remove" << std::endl;
         return table[0].Remove(key);
     }
 

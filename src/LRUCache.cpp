@@ -189,18 +189,30 @@ namespace emcache
         std::cout << del->key->toString() << std::endl;
         Entry *dictDel = db->dict->Remove(del->key);
 
+        // if (dictDel)
+        // {
+        //     LRURemove(dictDel);
+        //     --db->slots;
+        //     FinishErase(dictDel);
+        // }
+        std::cout << "expire remove" << std::endl;
+        std::cout << del->key << std::endl;
+        std::cout << "delkey:" << del->key->toString() << std::endl;
+        Entry *expireDel = db->expire->Remove(del->key);
+
         if (dictDel)
         {
             LRURemove(dictDel);
             --db->slots;
+            std::cout << "dict erase" << std::endl;
             FinishErase(dictDel);
         }
-
-        Entry *expireDel = db->expire->Remove(del->key);
 
         if (expireDel)
         {
             --db->expire_num;
+            std::cout << "expire erase" << std::endl;
+
             FinishErase(expireDel);
         }
     }
