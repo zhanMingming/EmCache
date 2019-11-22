@@ -28,7 +28,6 @@ namespace emcache
         {
 
             ++(*count);
-            std::cout << "couut: " << *count << std::endl;
         }
 
 
@@ -36,11 +35,9 @@ namespace emcache
 
         ~Robj()
         {
-            std::cout << "~Robj: count" << *count << std::endl;
-            //std::cout << "free Robj" << std::endl;
+               //std::cout << "free Robj" << std::endl;
             if (--(*count) == 0)
             {
-                std::cout << "count:" << *count << std::endl;
                 delete[] buf;
                 buf = nullptr;
 
@@ -147,14 +144,12 @@ namespace emcache
             //std::cout << "key:" << key << std::endl;
             if (key)
             {
-                std::cout << "free key" << std::endl;
                 delete key;
                 key = nullptr;
                 //std::cout << "free key" << std::endl;
             }
             if (v.val && flag)
             {
-                std::cout << "free value" << std::endl;
                 delete v.val;
 
                 v.val = nullptr;
