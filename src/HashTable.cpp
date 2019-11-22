@@ -74,6 +74,8 @@ namespace emcache
 
     Entry **HashTable::FindPointer(const Robj *key)
     {
+        std::cout << "findPointer:" << key->toString() << std::endl;
+        std::cout << key->length() << std::endl;
         uint32_t hash = HashFunc(key);
         Entry **ptr = &list_[hash & (length_ - 1)];
         while ((*ptr != nullptr) && !(compartor((*ptr)->key, key)))

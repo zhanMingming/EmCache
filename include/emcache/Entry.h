@@ -26,7 +26,9 @@ namespace emcache
         Robj(const Robj *rhs)
             : len(rhs->len), buf(rhs->buf), count(rhs->count)
         {
+
             ++(*count);
+            std::cout << "couut: " << *count << std::endl;
         }
 
 
@@ -34,9 +36,11 @@ namespace emcache
 
         ~Robj()
         {
+            std::cout << "~Robj: count" << *count << std::endl;
             //std::cout << "free Robj" << std::endl;
             if (--(*count) == 0)
             {
+                std::cout << "count:" << *count << std::endl;
                 delete[] buf;
                 buf = nullptr;
 
@@ -62,7 +66,7 @@ namespace emcache
             return len;
         }
 
-        std::string toString()
+        std::string toString() const
         {
             return std::string(buf, len);
         }
@@ -143,12 +147,14 @@ namespace emcache
             //std::cout << "key:" << key << std::endl;
             if (key)
             {
+                std::cout << "free key" << std::endl;
                 delete key;
                 key = nullptr;
                 //std::cout << "free key" << std::endl;
             }
             if (v.val && flag)
             {
+                std::cout << "free value" << std::endl;
                 delete v.val;
 
                 v.val = nullptr;
