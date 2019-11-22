@@ -123,9 +123,12 @@ namespace emcache
         MemInfo  memInfo = GetMemoccupy();
         if (memInfo.mem_used_rate >= Mem_Used_Rate)
         {
+            std::cout << "Mem return true" << std::endl;
             return true;
         }
     #endif
+        std::cout << "Mem return flase" << std::endl;
+
         return false;
     }
 

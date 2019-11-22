@@ -78,6 +78,7 @@ namespace emcache
             FinishErase(db->expire->Insert(expireEntry));
             ++db->expire_num;
         }
+        std::cout << "insert key" << "[" << key  << ":" << value << std::endl;
 
         if ((option.maxmemory == 0 && MemoryIsLow()) || (option.maxmemory != 0 && usage > option.maxmemory))
         {
@@ -166,6 +167,7 @@ namespace emcache
         // Mac 系统下 目前没有设置maxmemory的话，当内存紧张时 无法回收内存
         while (option.maxmemory != 0 && usage > option.maxmemory && lru.next != &lru)
         {
+            std::cout << "LRU1" << std::endl;
             Entry *old = lru.next;
             FreeEntry(old);
 
@@ -174,6 +176,7 @@ namespace emcache
         }
 
         while (MemoryIsLow() && lru.next != &lru) {
+            std::cout << "LRU2" << std::endl;
             Entry *old = lru.next;
             FreeEntry(old);
             usage -= old->key->len;
@@ -183,7 +186,7 @@ namespace emcache
 
     void LRUCache::FreeEntry(Entry *del)
     {
-
+        std::cout << del->key << std::endl;
         Entry *dictDel = db->dict->Remove(del->key);
 
         if (dictDel)
