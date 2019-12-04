@@ -19,7 +19,9 @@ namespace emcache
         //name = name_;
 
         if (option.maxmemory != 0)
-        {
+        {            
+            // MB to B
+            option.maxmemory = option.maxmemory * 1024 * 1024;
             const size_t per_capacity = (option.maxmemory + db_num - 1) / db_num;
             option.maxmemory = per_capacity;
         }

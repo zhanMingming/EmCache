@@ -19,13 +19,13 @@ namespace emcache
 
         LruOption  lru = volatile_lru;
         
-        // A value of 0 means unlimited
+        // A value of 0 means unlimited  Unit：MB
         size_t maxmemory = 0;
 
-        // max key length  KB
+        // max key length  Unit: KB
         size_t max_key_length =  521;
         
-        //max value length
+        //max value length  Unit: KB
         size_t max_value_length = 1024;
 
         //when the load_factor reaches the set value, capacity expansion start
